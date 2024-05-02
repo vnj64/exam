@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+    <h1>Cart</h1>
+
+    {% if message %}
+        {{ message }}
+    {% endif %}
+    {% if cart_items %}
+        <div style="display: flex">
+            {% for cart_item in cart_items %}
+                <div style="margin-right: 50px">
+                    <h4>Name: {{ cart_item.product.name }}</h4>
+                    <h4>Quantity: {{ cart_item.quantity }}</h4>
+                    <h4>Price per one: {{ cart_item.product.price }}</h4>
+                    <a href="{% url 'market:delete_cart' pk=cart_item.pk %}">Delete from cart</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h3>Total sum: {{ total_price }}</h3>
+        <a href="{% url 'market:payout' %}">Pay up</a>
+    {% else %}
+        <h3>No products yet</h3>
+    {% endif %}
+{% endblock %}

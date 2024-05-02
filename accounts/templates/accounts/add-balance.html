@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Add balance{% endblock %}
+
+{% block content %}
+    <h1>User add balance</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="{{ form.balance.id_for_label }}">Balance</label>
+        {{ form.balance }} <br> <br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+{% endblock %}

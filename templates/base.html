@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<header>
+    <a href="{% url 'market:home' %}">Home</a>
+    <a href="{% url 'market:top_products' %}">Top products</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'accounts:profile' %}">Profile</a>
+        <a href="{% url 'market:cart' %}">Cart</a>
+        <a href="{% url 'accounts:logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'accounts:register' %}">Register</a>
+        <a href="{% url 'accounts:login' %}">Login</a>
+    {% endif %}
+</header>
+{% block content %}{% endblock %}
+</body>
+</html>

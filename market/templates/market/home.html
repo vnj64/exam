@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <h1>Products</h1>
+    <div style="display: flex">
+    {% if products %}
+        {% for product in products %}
+            <div style="margin-right: 50px; text-align: center">
+                <h3>name: {{ product.name }}</h3>
+                <h4>price: {{ product.price }}</h4>
+                <h4>store: {{ product.store.name }}</h4>
+                <h4>count: {{ product.quantity }} left</h4>
+                <a href="{% url 'market:add_cart' pk=product.pk %}">add to cart</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h1>No products yet</h1>
+    {% endif %}
+    </div>
+{% endblock %}

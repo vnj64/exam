@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Top Products{% endblock %}
+
+{% block content %}
+    <div style="display: flex">
+    {% for top_product in top_products %}
+        <div style="margin-right: 50px; text-align: center">
+            <h3>name: {{ top_product.product.name }}</h3>
+            <h4>price: {{ top_product.product.price }}</h4>
+            <h4>store: {{ top_product.product.store.name }}</h4>
+            <h4>sale count: {{ top_product.count }}</h4>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

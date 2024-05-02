@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+
+        <label for={{ form.username.id_for_label }}>Username</label>
+        {{ form.username }} <br> <br>
+        <label for={{ form.password1.id_for_label }}>Password</label>
+        {{ form.password1 }}<br> <br>
+        <label for={{ form.password2.id_for_label }}>Confirm password</label>
+        {{ form.password2 }}<br> <br>
+
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
